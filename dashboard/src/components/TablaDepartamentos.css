@@ -1,0 +1,103 @@
+.tabla-departamentos-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin: 20px 0;
+}
+
+.tabla-departamentos-title {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 2px solid #4A90E2;
+  padding-bottom: 10px;
+}
+
+.tabla-departamentos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.tabla-departamentos th {
+  background-color: #f5f5f5;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.tabla-departamentos td {
+  padding: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.tabla-departamentos tr:hover {
+  background-color: #fafafa;
+}
+
+.departamento-nombre {
+  font-weight: 500;
+  color: #333;
+}
+
+.departamento-ausentismo {
+  color: #ff4d4f;
+  font-weight: 500;
+  text-align: center;
+}
+
+.departamento-tardanza {
+  color: #faad14;
+  font-weight: 500;
+  text-align: center;
+}
+
+.departamento-empleados {
+  color: #666;
+  text-align: center;
+}
+
+.estado-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.estado-bueno {
+  background-color: #e6f7ee;
+  color: #52c41a;
+}
+
+.estado-alerta {
+  background-color: #fff8e6;
+  color: #faad14;
+}
+
+.estado-critico {
+  background-color: #ffe6e6;
+  color: #f5222d;
+}
+
+/* Responsive para la tabla */
+@media (max-width: 768px) {
+  .tabla-departamentos {
+    font-size: 0.8rem;
+  }
+  
+  .tabla-departamentos th,
+  .tabla-departamentos td {
+    padding: 8px;
+  }
+  
+  .estado-badge {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
+}
