@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header className="pyme-header">
           <div>
-            <span>AAAAAAAAAAAAAAAAAAAAA</span>
+            <span>Panaderia El Sol</span>
           </div>
           <h1>Dashboard de Producción</h1>
     </header>
