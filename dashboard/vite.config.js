@@ -3,8 +3,9 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: './', // ← ¡IMPORTANTE! Esto soluciona rutas de assets
+  base: '/', // ← Importante para que las rutas funcionen
   build: {
-    outDir: 'dist'
+    outDir: 'dist',
+    assetsDir: 'assets'
   }
 })
