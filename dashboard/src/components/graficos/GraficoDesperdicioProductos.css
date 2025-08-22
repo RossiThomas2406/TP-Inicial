@@ -187,19 +187,12 @@
     font-size: 24px;
   }
   
-  .chart-container {
-    height: 350px;
-  }
 }
 
 /* Estilos para pantallas muy grandes */
 @media (min-width: 1600px) {
   .grafico-desperdicio-container {
     padding: 40px;
-  }
-  
-  .chart-container {
-    height: 500px;
   }
   
   .stat-valor {
