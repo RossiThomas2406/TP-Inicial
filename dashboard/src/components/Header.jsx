@@ -5,7 +5,7 @@ import "./Header.css";
 const Header = () => {
   const [fechaDesde, setFechaDesde] = useState("");
   const [fechaHasta, setFechaHasta] = useState("");
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuAbierto, setMenuAbierto] = useState(false);
 
   const handleGenerarReporte = () => {
     const doc = new jsPDF();
@@ -21,45 +21,57 @@ const Header = () => {
     doc.save(`reporte_produccion_${fechaDesde}_a_${fechaHasta}.pdf`);
   };
 
+  const toggleMenu = () => {
+    setMenuAbierto(!menuAbierto);
+  };
+
   return (
-    <header className="pyme-header">
-      <div className="nombre-pyme">
-        <span>Panaderia El Sol</span>
-        <h1>Dashboard de Producción</h1>
+
+      <div className="header-contenedor">
+        <div className="header-nav">
+          <div className="nombre-pyme">
+            <span>Panaderia El Sol</span>
+            <h1>Dashboard de Producción</h1>
+          </div>
+
+          <button 
+            className={`hamburguesa-btn ${menuAbierto ? 'activo' : ''}`}
+            onClick={toggleMenu}
+            aria-label="Abrir menú de opciones"
+          >
+            <span className="hamburguesa-linea"></span>
+            <span className="hamburguesa-linea"></span>
+            <span className="hamburguesa-linea"></span>
+          </button>
+        </div>
+
+        {/* Controles - ahora con clase condicional para mostrar/ocultar */}
+        <div className={`opcionesMenu ${menuAbierto ? 'menu-abierto' : ''}`}>
+          <div className="opciones-fecha">
+            <label>
+              Desde:
+              <input
+                type="date"
+                value={fechaDesde}
+                onChange={(e) => setFechaDesde(e.target.value)}
+              />
+            </label>
+            <label>
+              Hasta:
+              <input
+                type="date"
+                value={fechaHasta}
+                onChange={(e) => setFechaHasta(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="opciones-botones">
+            <button className="btn-estadistica">Visualizar Estadística</button>
+            <button className="btn-reporte" onClick={handleGenerarReporte}>Generar Reporte</button>
+          </div>
+        </div>
       </div>
 
-      {/* Botón Hamburguesa */}
-      <div
-        className={`menu-toggle ${menuOpen ? "open" : ""}`}
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      {/* Controles */}
-      <div className={`header-controls ${menuOpen ? "show" : ""}`}>
-        <label>
-          Desde:
-          <input
-            type="date"
-            value={fechaDesde}
-            onChange={(e) => setFechaDesde(e.target.value)}
-          />
-        </label>
-        <label>
-          Hasta:
-          <input
-            type="date"
-            value={fechaHasta}
-            onChange={(e) => setFechaHasta(e.target.value)}
-          />
-        </label>
-        <button>Visualizar Estadística</button>
-        <button onClick={handleGenerarReporte}>Generar Reporte</button>
-      </div>
-    </header>
   );
 };
 
