@@ -2,45 +2,47 @@
   background-color: #353A56;
   color: white;
   padding: 1rem;
-  text-align: center;
   border-bottom: 2px solid #ddd;
   position: sticky;
   top: 0;
   z-index: 100;
   margin-bottom: 40px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Importante para que se acomode en móvil */
+  gap: 1rem;
 }
 
-.nombre-pyme{
+.nombre-pyme {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   font-size: 1.2rem;
   font-weight: bold;
   margin: 0;
 }
 
 .header-controls {
-  margin-top: 1rem;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
 .header-controls label {
   display: flex;
-  font-size: 1rem;
   align-items: center;
+  font-size: 1rem;
   width: 210px;
   justify-content: space-between;
 }
 
 .header-controls input {
   height: 40px;
-  margin-top: 0.3rem;
   padding: 0.3rem;
   font-size: 1rem;
 }
@@ -56,4 +58,32 @@
 
 .header-controls button:hover {
   background-color: #145a9e;
+}
+
+/* 📱 Responsividad */
+@media (max-width: 900px) {
+  .pyme-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nombre-pyme {
+    align-items: center;
+  }
+
+  .header-controls {
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .header-controls label {
+    width: 100%;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .header-controls button {
+    width: 100%;
+  }
 }

@@ -23,24 +23,25 @@ const TablaDepartamentos = ({ datos }) => {
             <th>Estado</th>
           </tr>
         </thead>
-        <tbody>
-          {datos.map((depto, index) => {
-            const estado = getEstadoDepartamento(depto);
-            return (
-              <tr key={index}>
-                <td className="departamento-nombre">{depto.departamento}</td>
-                <td className="departamento-ausentismo">{depto.ausentismo}%</td>
-                <td className="departamento-tardanza">{depto.tardanza}min</td>
-                <td className="departamento-empleados">{depto.empleados}</td>
-                <td>
-                  <span className={`estado-badge ${estado.clase}`}>
-                    {estado.texto}
-                  </span>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
+<tbody>
+  {datos.map((depto, index) => {
+    const estado = getEstadoDepartamento(depto);
+    return (
+      <tr key={index}>
+        <td data-label="Departamento" className="departamento-nombre">{depto.departamento}</td>
+        <td data-label="Ausentismo" className="departamento-ausentismo">{depto.ausentismo}%</td>
+        <td data-label="Tardanza" className="departamento-tardanza">{depto.tardanza}min</td>
+        <td data-label="Empleados" className="departamento-empleados">{depto.empleados}</td>
+        <td data-label="Estado">
+          <span className={`estado-badge ${estado.clase}`}>
+            {estado.texto}
+          </span>
+        </td>
+      </tr>
+    );
+  })}
+</tbody>
+
       </table>
     </div>
   );

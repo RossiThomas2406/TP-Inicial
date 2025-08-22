@@ -8,7 +8,6 @@ const Header = () => {
 
   const handleVisualizar = () => {
     console.log("Visualizar estadísticas desde:", fechaDesde, "hasta:", fechaHasta);
-    // Aquí podrías filtrar tus estadísticas en pantalla
   };
 
   const handleGenerarReporte = () => {
@@ -22,17 +21,15 @@ const Header = () => {
 
     doc.text("Aquí puedes agregar datos de producción, estadísticas, etc.", 20, 60);
 
-    // Guarda y descarga automáticamente el PDF
     doc.save(`reporte_produccion_${fechaDesde}_a_${fechaHasta}.pdf`);
   };
 
   return (
     <header className="pyme-header">
-      <div className='nombre-pyme'>
+      <div className="nombre-pyme">
         <span>Panaderia El Sol</span>
         <h1>Dashboard de Producción</h1>
       </div>
-
 
       <div className="header-controls">
         <label>
