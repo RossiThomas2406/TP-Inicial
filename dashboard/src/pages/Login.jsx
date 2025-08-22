@@ -97,7 +97,6 @@ export default function Login() {
   };
 
   return (  
-    <div className='login-container'>
 
       <div className='menuLogin'>
         <form onSubmit={handleSubmit}>
@@ -153,6 +152,6 @@ export default function Login() {
           </div>
         </form>
       </div>
-    </div>
+
   );
 }
