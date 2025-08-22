@@ -4,8 +4,6 @@ import GraficoEficienciaPorProducto from '../components/graficos/GraficoEficienc
 import GraficoCumplimientoPlanPlanta from '../components/graficos/GraficoCumplimientoPlanPlanta';
 import GraficoOEE from '../components/graficos/GraficoOEE';
 import GraficoDesperdicioProductos from '../components/graficos/GraficoDesperdicioProductos';
-import GraficoAusentismo from '../components/graficos/GraficoAusentismo';
-import GraficoTardanza from '../components/graficos/GraficoTardanza';
 import TablaDepartamentos from '../components/TablaDepartamentos';
 import GraficoNoConformidades from '../components/graficos/GraficoNoConformidades';
 
@@ -13,7 +11,7 @@ import './Dashboard.css';
 
 
 //import de los datos de ejemplo
-import {kpiCardsData,produccionPorTipo,datosNoConformidades,eficienciaPorProducto,cumplimientoPlanData,oeePromedio,desperdicioProductosData,ausentismoData,tardanzaData,statsAsistencia,ausentismoPorDepartamento} from '../data/Mockdata';
+import {kpiCardsData,produccionPorTipo,datosNoConformidades,eficienciaPorProducto,cumplimientoPlanData,oeePromedio,desperdicioProductosData,ausentismoPorDepartamento} from '../data/Mockdata';
 
 
 export default function BakeryDashboard() {

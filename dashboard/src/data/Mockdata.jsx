@@ -148,7 +148,7 @@ export const kpiCardsData = [
     value: "94.8",
     suffix: "%",
     icon: "🎯",
-    color: "#6bad86ff",
+    color: "#64a37fff",
     descripcion: "Promedio de cumplimiento del plan de producción"
   },
 
@@ -157,7 +157,7 @@ export const kpiCardsData = [
     value: "11.0",
     suffix: "%",
     icon: "🗑️",
-    color: "#ebb249ff",
+    color: "#e0ab47ff",
     descripcion: "Productos fuera de especificación"
   },
   
@@ -166,7 +166,7 @@ export const kpiCardsData = [
     value: "5.6",
     suffix: "%",
     icon: "⛔",
-    color: "#cc493dff",
+    color: "#FF8042",
     descripcion: "Eficiencia general de equipos"
   },
 
@@ -175,7 +175,7 @@ export const kpiCardsData = [
     value: "8.4",
     suffix: "%",
     icon: "👥",
-    color: "#9b93d1ff",
+    color: "#cc493dff",
     descripcion: "Tasa promedio de ausencias"
   },
 
@@ -184,7 +184,7 @@ export const kpiCardsData = [
     value: "12.5",
     suffix: "min",
     icon: "⏱️",
-    color: "#7c7b81ff",
+    color: "#8b83beff",
     descripcion: "Tasa promedio de ausencias"
   }
 ];

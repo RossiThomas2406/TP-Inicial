@@ -22,9 +22,9 @@ const GraficoEficienciaPorProducto = ({ eficienciaPorProducto }) => {
 
   // Función para determinar el color según la eficiencia
   const getEfficiencyColor = (value) => {
-    if (value >= 100) return '#4CAF50'; // Verde para eficiencia >= 100%
-    if (value >= 80) return '#FFC107'; // Amarillo para eficiencia >= 80%
-    return '#F44336'; // Rojo para eficiencia menor a 80%
+    if (value >= 100) return '#82CA9D'; // Verde para eficiencia >= 100%
+    if (value >= 80) return '#FFC355'; // Amarillo para eficiencia >= 80%
+    return '#CC493D'; // Rojo para eficiencia menor a 80%
   };
 
   return (
@@ -67,7 +67,7 @@ const GraficoEficienciaPorProducto = ({ eficienciaPorProducto }) => {
 
             {/* Línea de referencia en 100% */}
             <ReferenceLine x={100} stroke="green" strokeDasharray="3 3" label="Planificado (100%)" />
-            <Bar dataKey="eficiencia" fill="#4A90E2">
+            <Bar dataKey="eficiencia" fill="#8884D8">
               <LabelList dataKey="eficiencia" position="right" formatter={(value) => `${value}%`} />
             </Bar>
           </BarChart>

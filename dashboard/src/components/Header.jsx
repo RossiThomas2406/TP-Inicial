@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { jsPDF } from 'jspdf';
 import './Header.css';
 
 const Header = () => {
@@ -7,12 +8,22 @@ const Header = () => {
 
   const handleVisualizar = () => {
     console.log("Visualizar estadísticas desde:", fechaDesde, "hasta:", fechaHasta);
-    // Aquí puedes llamar a una función que cargue los datos del dashboard filtrados por rango de fechas
+    // Aquí podrías filtrar tus estadísticas en pantalla
   };
 
   const handleGenerarReporte = () => {
-    console.log("Generar reporte desde:", fechaDesde, "hasta:", fechaHasta);
-    // Aquí puedes implementar la lógica para generar y descargar el reporte
+    const doc = new jsPDF();
+
+    doc.setFontSize(16);
+    doc.text("Reporte de Producción - Panadería El Sol", 20, 20);
+
+    doc.setFontSize(12);
+    doc.text(`Rango de fechas: ${fechaDesde || "N/A"} a ${fechaHasta || "N/A"}`, 20, 40);
+
+    doc.text("Aquí puedes agregar datos de producción, estadísticas, etc.", 20, 60);
+
+    // Guarda y descarga automáticamente el PDF
+    doc.save(`reporte_produccion_${fechaDesde}_a_${fechaHasta}.pdf`);
   };
 
   return (
@@ -24,7 +35,7 @@ const Header = () => {
 
 
       <div className="header-controls">
-        <label className='fecha'>
+        <label>
           Desde:
           <input
             type="date"
@@ -32,7 +43,7 @@ const Header = () => {
             onChange={(e) => setFechaDesde(e.target.value)}
           />
         </label>
-        <label className='fecha'>
+        <label>
           Hasta:
           <input
             type="date"

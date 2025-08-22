@@ -19,9 +19,9 @@ const GraficoDesperdicioProductos = ({data}) => {
   // Colores según la tendencia
   const getColor = (tendencia) => {
     switch(tendencia) {
-      case 'estable': return '#4CAF50';
-      case 'alerta': return '#FF9800';
-      case 'critica': return '#F44336';
+      case 'estable': return '#82CA9D';
+      case 'alerta': return '#FFC154';
+      case 'critica': return '#CC493D';
       default: return '#9E9E9E';
     }
   };
