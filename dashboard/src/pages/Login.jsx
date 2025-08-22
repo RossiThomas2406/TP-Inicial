@@ -98,12 +98,6 @@ export default function Login() {
 
   return (  
     <div className='login-container'>
-      <header className="pyme-header">
-        <div className="nombre-pyme">
-          <span>Panaderia El Sol</span>
-          <h1>Dashboard de Producción</h1>
-        </div>
-      </header>
 
       <div className='menuLogin'>
         <form onSubmit={handleSubmit}>
