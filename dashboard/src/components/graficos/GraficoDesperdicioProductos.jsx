@@ -43,32 +43,10 @@ const GraficoDesperdicioProductos = ({data}) => {
     return null;
   };
 
-  // Calcular estadísticas
-  const promedioDesperdicio = (data.reduce((acc, item) => acc + item.desperdicio, 0) / data.length).toFixed(1);
-  const maxDesperdicio = Math.max(...data.map(item => item.desperdicio));
-  const minDesperdicio = Math.min(...data.map(item => item.desperdicio));
-
   return (
     <div className="grafico-desperdicio-container">
       <div className="header-section">
-        <h2 className="titulo-principal">Desperdicio por Producto</h2>
-        <p className="subtitulo">Porcentaje de desperdicio en la producción</p>
-      </div>
-      
-      {/* Estadísticas resumen */}
-      <div className="estadisticas-resumen">
-        <div className="stat-card">
-          <div className="stat-valor">{promedioDesperdicio}%</div>
-          <div className="stat-label">Promedio</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-valor">{maxDesperdicio}%</div>
-          <div className="stat-label">Máximo</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-valor">{minDesperdicio}%</div>
-          <div className="stat-label">Mínimo</div>
-        </div>
+        <h2 className="titulo">Desperdicio por Producto</h2>
       </div>
 
       <div className="separator"></div>
@@ -143,24 +121,21 @@ const GraficoDesperdicioProductos = ({data}) => {
         </div>
       )}
 
-      <div className="separator"></div>
-
       {/* Leyenda */}
-      <div className="leyenda">
-        <div className="leyenda-titulo">Leyenda de Tendencia:</div>
-        <div className="leyenda-items">
-          <div className="leyenda-item">
-            <div className="leyenda-color" style={{ backgroundColor: '#82CA9D' }}></div>
-            <span>Estable</span>
-          </div>
-          <div className="leyenda-item">
-            <div className="leyenda-color" style={{ backgroundColor: '#EBB249' }}></div>
-            <span>Alerta</span>
-          </div>
-          <div className="leyenda-item">
-            <div className="leyenda-color" style={{ backgroundColor: '#CC493D' }}></div>
-            <span>Crítica</span>
-          </div>
+      <div className="leyenda-cumplimiento">
+
+        <div className="leyenda-item-cumplimiento">
+          <div className="leyenda-color-cumplimiento leyenda-estable"></div>
+          <span>Estable</span>
+        </div>
+
+        <div className="leyenda-item-cumplimiento">
+          <div className="leyenda-color-cumplimiento leyenda-alerta"></div>
+          <span>Alerta</span>
+        </div>
+        <div className="leyenda-item-cumplimiento">
+          <div className="leyenda-color-cumplimiento leyenda-critica"></div>
+          <span>Critica</span>
         </div>
       </div>
     </div>

@@ -1,12 +1,12 @@
 /* Estilos para el componente - Versión Full Width */
 .grafico-desperdicio-container {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   width: 100%;
   margin: 0;
   padding: 30px;
   background-color: #fff;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
+  border-radius: 10px;
 }
 
 .header-section {
@@ -99,41 +99,36 @@
   height: 400px;
 }
 
-/* Leyenda */
-.leyenda {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  border: 1px solid #eaecef;
-}
-
-.leyenda-titulo {
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: #2c3e50;
-  font-size: 16px;
-}
-
-.leyenda-items {
+.leyenda-cumplimiento {
   display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10px;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 20px;
 }
 
-.leyenda-item {
+.leyenda-item-cumplimiento {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 14px;
+  gap: 8px;
 }
 
-.leyenda-color {
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.leyenda-color-cumplimiento {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+}
+
+.leyenda-estable {
+  background-color: #82CA9D;
+}
+
+.leyenda-alerta {
+  background-color: #FFC154;
+}
+
+.leyenda-critica {
+  background-color: #CC493D;
 }
 
 /* Tooltip personalizado */
@@ -173,10 +168,15 @@
     width: 100%;
     max-width: none;
   }
-  
-  .leyenda-items {
+
+    .leyenda-cumplimiento {
     flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .titulo-cumplimiento {
+    font-size: 1.3rem;
   }
   
   .titulo-principal {

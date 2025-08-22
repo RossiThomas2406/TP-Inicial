@@ -11,7 +11,7 @@ const TablaDepartamentos = ({ datos }) => {
 
   return (
     <div className="tabla-departamentos-container">
-      <div className="tabla-departamentos-title">Desempeño por Departamento</div>
+      <div className="titulo">Desempeño por Departamento</div>
       
       <table className="tabla-departamentos">
         <thead>

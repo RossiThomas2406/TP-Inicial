@@ -14,9 +14,11 @@
 body {
   font-family: var(--font-primary);
   font-weight: 400;
+  background-color: #ececec;
 }
 
 .titulo {
   font-family: var(--font-secondary);
   font-weight: 600;
+
 }

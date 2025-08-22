@@ -13,7 +13,7 @@ const GraficoOEE = ({ oeePromedio }) => {
 
   return (
     <div className="oee-simple-container">
-      <h3 className="oee-simple-title">Eficiencia General (OEE)</h3>
+      <h3 className="titulo">Eficiencia General (OEE)</h3>
       
       <div className="oee-main-card">
         <div className="oee-value-circle" style={{ borderColor: oeeStatus.color }}>

@@ -3,7 +3,7 @@
   padding: 20px;
   border-radius: 12px;
   color: black;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   width: 320px;
   cursor: pointer;

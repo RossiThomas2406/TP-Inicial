@@ -32,7 +32,7 @@ const GraficoNoConformidades = () => {
 
   return (
     <div className="grafico-no-conformidades">
-      <h3 className="grafico-titulo">No Conformidades por Tipo</h3>
+      <h3 className="titulo">No Conformidades por Tipo</h3>
       
       <ResponsiveContainer width="100%" height={350}>
         <BarChart
