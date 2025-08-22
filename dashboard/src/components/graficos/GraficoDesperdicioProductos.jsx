@@ -150,15 +150,15 @@ const GraficoDesperdicioProductos = ({data}) => {
         <div className="leyenda-titulo">Leyenda de Tendencia:</div>
         <div className="leyenda-items">
           <div className="leyenda-item">
-            <div className="leyenda-color" style={{ backgroundColor: '#4CAF50' }}></div>
+            <div className="leyenda-color" style={{ backgroundColor: '#82CA9D' }}></div>
             <span>Estable</span>
           </div>
           <div className="leyenda-item">
-            <div className="leyenda-color" style={{ backgroundColor: '#FF9800' }}></div>
+            <div className="leyenda-color" style={{ backgroundColor: '#EBB249' }}></div>
             <span>Alerta</span>
           </div>
           <div className="leyenda-item">
-            <div className="leyenda-color" style={{ backgroundColor: '#F44336' }}></div>
+            <div className="leyenda-color" style={{ backgroundColor: '#CC493D' }}></div>
             <span>Crítica</span>
           </div>
         </div>
