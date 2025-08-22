@@ -1,120 +1,228 @@
+/* Estilos para el componente - Versión Full Width */
 .grafico-desperdicio-container {
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin: 20px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  margin: 0;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
-.titulo-desperdicio {
+.header-section {
   text-align: center;
-  color: #333;
-  margin-bottom: 25px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  border-bottom: 2px solid #4A90E2;
-  padding-bottom: 10px;
+  margin-bottom: 30px;
 }
 
-.stats-header {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  margin-bottom: 25px;
+.titulo-principal {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.subtitulo {
+  color: #7f8c8d;
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+.estadisticas-resumen {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  gap: 20px;
 }
 
 .stat-card {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  flex: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eaecef;
+  max-width: 300px;
 }
 
-.stat-title {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-
-.stat-value {
-  font-size: 1.8rem;
+.stat-valor {
+  font-size: 28px;
   font-weight: bold;
-  margin-bottom: 5px;
+  color: #2c3e50;
+  margin-bottom: 8px;
 }
 
-.stat-meta {
-  color: #52c41a;
+.stat-label {
+  font-size: 16px;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.stat-promedio {
-  color: #1890ff;
+.separator {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+  margin: 30px 0;
 }
 
-.stat-maximo {
-  color: #f5222d;
+/* Estilos para la tabla en vista móvil */
+.tabla-desperdicio {
+  width: 100%;
+  margin-bottom: 30px;
 }
 
-.stat-subtitle {
-  font-size: 0.8rem;
-  color: #888;
-}
-
-.leyenda-estados {
+.tabla-fila {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin: 20px 0;
-  padding: 15px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  align-items: center;
+}
+
+.tabla-fila:hover {
+  background-color: #f9f9f9;
+}
+
+.producto-nombre {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.desperdicio-valor {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Contenedor del gráfico - AHORA OCUPA EL 100% */
+.chart-container {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 30px;
+}
+
+/* Leyenda */
+.leyenda {
+  margin-top: 25px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  border: 1px solid #eaecef;
+}
+
+.leyenda-titulo {
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  font-size: 16px;
+}
+
+.leyenda-items {
+  display: flex;
   flex-wrap: wrap;
+  gap: 20px;
 }
 
 .leyenda-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.9rem;
+  gap: 10px;
+  font-size: 14px;
 }
 
 .leyenda-color {
-  width: 15px;
-  height: 15px;
-  border-radius: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.estado-baja {
-  background-color: #52c41a;
+/* Tooltip personalizado */
+.custom-tooltip {
+  background-color: white;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.estado-estable {
-  background-color: #faad14;
+.custom-tooltip h3 {
+  margin: 0 0 10px 0;
+  color: #2c3e50;
+  font-size: 16px;
 }
 
-.estado-alerta {
-  background-color: #ff7a45;
-}
-
-.estado-critica {
-  background-color: #f5222d;
+.custom-tooltip p {
+  margin: 5px 0;
+  color: #7f8c8d;
+  font-size: 14px;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .stats-header {
-    grid-template-columns: 1fr;
+  .grafico-desperdicio-container {
+    padding: 20px;
   }
   
-  .leyenda-estados {
+  .estadisticas-resumen {
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
   }
   
-  .stat-value {
-    font-size: 1.5rem;
+  .stat-card {
+    width: 100%;
+    max-width: none;
   }
+  
+  .leyenda-items {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .titulo-principal {
+    font-size: 24px;
+  }
+  
+  .stat-valor {
+    font-size: 24px;
+  }
+  
+  .chart-container {
+    height: 350px;
+  }
+}
+
+/* Estilos para pantallas muy grandes */
+@media (min-width: 1600px) {
+  .grafico-desperdicio-container {
+    padding: 40px;
+  }
+  
+  .chart-container {
+    height: 500px;
+  }
+  
+  .stat-valor {
+    font-size: 32px;
+  }
+  
+  .leyenda-items {
+    justify-content: center;
+  }
+}
+
+/* Asegurar que el contenedor padre ocupe todo el ancho */
+body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Si usas un contenedor principal, asegúrate de que ocupe todo el ancho */
+.main-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }

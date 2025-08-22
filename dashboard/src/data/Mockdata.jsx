@@ -1,8 +1,10 @@
-// PRODUCTOS DE LA PYME ALIMENTICIA
-export const productos = {
-  panificados: ['Pan de Molde', 'Pan Flauta', 'Pan Integral', 'Pan Saborizado'],
-  facturas: ['Medialunas', 'Vigilantes', 'Facturas Comunes'],
-  especiales: ['Pan sin TACC', 'Tortas', 'Budines', 'Prepizzas', 'Galletas']
+// DATOS OEE (EFICIENCIA GENERAL)
+export const oeePromedio = {
+  oee: 78.2,
+  disponibilidad: 91.7,
+  rendimiento: 89.1,
+  calidad: 96.0,
+  metaOEE: 85.0
 };
 
 // PRODUCCIÓN AGRUPADA POR CATEGORÍA (kg por semana)
@@ -12,6 +14,25 @@ export const produccionPorTipo = [
   { tipo: 'Tortillas y prepizzas', produccion: 950, meta: 1000 },
   { tipo: 'Productos saludables', produccion: 1200, meta: 1300 },
 ];
+
+// Datos de ejemplo para no conformidades en industria alimenticia
+export const datosNoConformidades = [
+  { tipo: 'Higiene y Limpieza', cantidad: 15},
+  { tipo: 'Temperatura inadecuada', cantidad: 12},
+  { tipo: 'Embalaje defectuoso', cantidad: 9},
+  { tipo: 'Etiquetado incorrecto', cantidad: 8},
+  { tipo: 'Peso irregular', cantidad: 5},
+  { tipo: 'Color anómalo', cantidad: 4},
+  { tipo: 'Otros', cantidad: 2}
+];
+
+// PRODUCTOS DE LA PYME ALIMENTICIA
+export const productos = {
+  panificados: ['Pan de Molde', 'Pan Flauta', 'Pan Integral', 'Pan Saborizado'],
+  facturas: ['Medialunas', 'Vigilantes', 'Facturas Comunes'],
+  especiales: ['Pan sin TACC', 'Tortas', 'Budines', 'Prepizzas', 'Galletas']
+};
+
 
 // EFICIENCIA POR PRODUCTO (% real vs planificado)
 export const eficienciaPorProducto = [
@@ -35,43 +56,19 @@ export const cumplimientoPlanData = [
   { producto: 'Medialunas', planificado: 1000, real: 950, cumplimiento: 95.0 }
 ];
 
-// DATOS OEE (EFICIENCIA GENERAL)
-export const oeePromedio = {
-  oee: 78.2,
-  disponibilidad: 91.7,
-  rendimiento: 89.1,
-  calidad: 96.0,
-  metaOEE: 85.0
-};
+
 
 // DESPERDICIO POR PRODUCTO (%)
 export const desperdicioProductosData = [
-  { producto: 'Pan de Molde', desperdicio: 4.2, meta: 5.0, tendencia: 'baja', produccion: 1150 },
-  { producto: 'Galletas', desperdicio: 3.1, meta: 4.0, tendencia: 'estable', produccion: 720 },
-  { producto: 'Tortas', desperdicio: 6.8, meta: 6.0, tendencia: 'alerta', produccion: 490 },
-  { producto: 'Panes Saborizados', desperdicio: 2.9, meta: 4.5, tendencia: 'baja', produccion: 1020 },
-  { producto: 'Facturas', desperdicio: 5.5, meta: 5.0, tendencia: 'alerta', produccion: 600 },
-  { producto: 'Prepizzas', desperdicio: 3.7, meta: 4.0, tendencia: 'estable', produccion: 680 },
-  { producto: 'Budines', desperdicio: 7.2, meta: 6.5, tendencia: 'critica', produccion: 550 },
-  { producto: 'Medialunas', desperdicio: 4.9, meta: 5.0, tendencia: 'estable', produccion: 950 }
+  { producto: 'Pan de Molde', desperdicio: 4.2, tendencia: 'estable'},
+  { producto: 'Galletas', desperdicio: 3.1, tendencia: 'estable'},
+  { producto: 'Tortas', desperdicio: 6.8, tendencia: 'alerta'},
+  { producto: 'Panes Saborizados', desperdicio: 2.9, tendencia: 'estable'},
+  { producto: 'Facturas', desperdicio: 5.5, tendencia: 'alerta'},
+  { producto: 'Prepizzas', desperdicio: 3.7, tendencia: 'estable'},
+  { producto: 'Budines', desperdicio: 7.2, tendencia: 'critica'},
+  { producto: 'Medialunas', desperdicio: 4.9, tendencia: 'estable'}
 ];
-
-// CALIDAD - NO CONFORMIDADES
-export const calidadData = {
-  totalControles: 245,
-  conformes: 218,
-  noConformes: 27,
-  tasaNoConformidad: 11.0,
-  meta: 8.0,
-  detallesNoConformes: [
-    { tipo: 'Temperatura', cantidad: 8, porcentaje: 29.6, productosAfectados: ['Pan de Molde', 'Tortas'] },
-    { tipo: 'Peso', cantidad: 6, porcentaje: 22.2, productosAfectados: ['Galletas', 'Facturas'] },
-    { tipo: 'Envase', cantidad: 5, porcentaje: 18.5, productosAfectados: ['Prepizzas', 'Budines'] },
-    { tipo: 'Color', cantidad: 4, porcentaje: 14.8, productosAfectados: ['Panes Saborizados'] },
-    { tipo: 'Sabor', cantidad: 3, porcentaje: 11.1, productosAfectados: ['Medialunas'] },
-    { tipo: 'Otros', cantidad: 1, porcentaje: 3.7, productosAfectados: ['Varios'] }
-  ]
-};
 
 // ASISTENCIA Y TARDANZA
 export const ausentismoData = [
@@ -151,33 +148,43 @@ export const kpiCardsData = [
     value: "94.8",
     suffix: "%",
     icon: "🎯",
-    color: "#4A90E2",
+    color: "#6bad86ff",
     descripcion: "Promedio de cumplimiento del plan de producción"
   },
 
   {
-    title: "No Conformidades",
+    title: "Tasa de Desperdicio",
     value: "11.0",
     suffix: "%",
-    icon: "✅",
-    color: "#8B5CF6",
+    icon: "🗑️",
+    color: "#ebb249ff",
     descripcion: "Productos fuera de especificación"
   },
   
   {
-    title: "OEE General",
-    value: "78.2",
+    title: "Tasa de No Conformidades",
+    value: "5.6",
     suffix: "%",
-    icon: "⚡",
-    color: "#F59E0B",
+    icon: "⛔",
+    color: "#cc493dff",
     descripcion: "Eficiencia general de equipos"
   },
+
   {
-    title: "Ausentismo",
+    title: "Tasa de Ausentismo",
     value: "8.4",
     suffix: "%",
     icon: "👥",
-    color: "#EF4444",
+    color: "#9b93d1ff",
+    descripcion: "Tasa promedio de ausencias"
+  },
+
+    {
+    title: "Tardanza Promedio",
+    value: "12.5",
+    suffix: "min",
+    icon: "⏱️",
+    color: "#7c7b81ff",
     descripcion: "Tasa promedio de ausencias"
   }
 ];

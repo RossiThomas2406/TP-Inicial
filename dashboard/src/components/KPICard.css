@@ -1,11 +1,14 @@
 .kpi-card {
+  margin-top: 50px;
   padding: 20px;
   border-radius: 12px;
-  color: white;
+  color: black;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  width: 400px;
+  width: 320px;
   cursor: pointer;
+  background-color: #5E6177;
+  color: white;
 }
 
 .kpi-card:hover {

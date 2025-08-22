@@ -1,0 +1,91 @@
+/* eficiencia-por-producto.css */
+
+.eficiencia-container {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.titulo {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+/* Estilos para la tabla en vista móvil */
+.tabla-eficiencia {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 15px;
+  background-color: #f5f5f5;
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+}
+
+.tabla-fila {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+
+.tabla-fila::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  background-color: var(--color-eficiencia);
+}
+
+.producto-nombre {
+  font-weight: 500;
+}
+
+.producto-eficiencia {
+  font-weight: bold;
+  color: var(--color-eficiencia);
+}
+
+.tabla-referencia {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  padding: 8px 15px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.referencia-linea {
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background-color: green;
+  margin-right: 10px;
+}
+
+.referencia-texto {
+  color: #666;
+}
+
+/* Estilos responsivos adicionales */
+@media (max-width: 480px) {
+  .tabla-header, .tabla-fila {
+    flex-direction: column;
+  }
+  
+  .producto-nombre {
+    margin-bottom: 5px;
+  }
+}

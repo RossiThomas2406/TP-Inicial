@@ -38,8 +38,8 @@ const GraficoCumplimientoPlanPlanta = ({ cumplimientoPlanData }) => {
   };
 
   return (
-    <div>
-      <h3>Planificado vs Real - Producción</h3>
+    <div className='grafico-cumplimiento-plan-planta'>
+      <h3 className='titulo'>Produccion Planificada vs Produccion Real - Por Producto</h3>
       
       <ResponsiveContainer width="100%" height={400}>
         <BarChart

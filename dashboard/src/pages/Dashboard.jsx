@@ -4,16 +4,16 @@ import GraficoEficienciaPorProducto from '../components/graficos/GraficoEficienc
 import GraficoCumplimientoPlanPlanta from '../components/graficos/GraficoCumplimientoPlanPlanta';
 import GraficoOEE from '../components/graficos/GraficoOEE';
 import GraficoDesperdicioProductos from '../components/graficos/GraficoDesperdicioProductos';
-import GraficoCalidadDonut from '../components/graficos/GraficoCalidadDonut';
 import GraficoAusentismo from '../components/graficos/GraficoAusentismo';
 import GraficoTardanza from '../components/graficos/GraficoTardanza';
 import TablaDepartamentos from '../components/TablaDepartamentos';
+import GraficoNoConformidades from '../components/graficos/GraficoNoConformidades';
 
 import './Dashboard.css';
 
 
 //import de los datos de ejemplo
-import {kpiCardsData,produccionPorTipo,eficienciaPorProducto,cumplimientoPlanData,oeePromedio,desperdicioProductosData,calidadData,ausentismoData,tardanzaData,statsAsistencia,ausentismoPorDepartamento} from '../data/Mockdata';
+import {kpiCardsData,produccionPorTipo,datosNoConformidades,eficienciaPorProducto,cumplimientoPlanData,oeePromedio,desperdicioProductosData,ausentismoData,tardanzaData,statsAsistencia,ausentismoPorDepartamento} from '../data/Mockdata';
 
 
 export default function BakeryDashboard() {
@@ -36,23 +36,21 @@ export default function BakeryDashboard() {
 
       {/* Produccion por Tipo */}
       <div className='graficosProductos'>
+
+          <GraficoOEE oeePromedio={oeePromedio} />
+
+          <GraficoCumplimientoPlanPlanta cumplimientoPlanData={cumplimientoPlanData} />
+
+          <GraficoDesperdicioProductos data={desperdicioProductosData} />
+
+          <GraficoNoConformidades data={datosNoConformidades} />
+
+          <TablaDepartamentos datos={ausentismoPorDepartamento}/>
+
           <GraficoProduccionPorTipo produccionPorTipo={produccionPorTipo}/>
 
           <GraficoEficienciaPorProducto eficienciaPorProducto={eficienciaPorProducto}/>
 
-          <GraficoCumplimientoPlanPlanta cumplimientoPlanData={cumplimientoPlanData} />
-
-          <GraficoOEE oeePromedio={oeePromedio} />
-
-          <GraficoDesperdicioProductos data={desperdicioProductosData} />
-
-          <GraficoCalidadDonut data={calidadData}/>
-
-          <GraficoAusentismo data={ausentismoData} stats={statsAsistencia}/>
-        
-          <GraficoTardanza data={tardanzaData} stats={statsAsistencia}/>
-      
-          <TablaDepartamentos datos={ausentismoPorDepartamento}/>
       </div>
 
     </div>

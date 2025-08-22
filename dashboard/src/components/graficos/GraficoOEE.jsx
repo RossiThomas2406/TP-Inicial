@@ -4,9 +4,9 @@ import './GraficoOEE.css';
 const GraficoOEE = ({ oeePromedio }) => {
   // Determinar el estado y color del semáforo
   const getOEEStatus = (value) => {
-    if (value >= 85) return { status: 'Excelente', color: '#52c41a', class: 'excelente' };
-    if (value >= 75) return { status: 'Aceptable', color: '#faad14', class: 'aceptable' };
-    return { status: 'Necesita mejora', color: '#f5222d', class: 'mejora' };
+    if (value >= 85) return { status: 'Excelente', color: '#7AC499', class: 'excelente' };
+    if (value >= 75) return { status: 'Aceptable', color: '#FFC355', class: 'aceptable' };
+    return { status: 'Necesita mejora', color: '#E3322D', class: 'mejora' };
   };
 
   const oeeStatus = getOEEStatus(oeePromedio.oee);

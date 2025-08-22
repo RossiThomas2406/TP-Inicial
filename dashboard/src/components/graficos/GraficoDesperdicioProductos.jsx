@@ -1,142 +1,166 @@
-import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, Cell } from 'recharts';
-import './GraficoDesperdicioProductos.css';
+import React, { useState, useEffect } from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, LabelList } from 'recharts';
+import './GraficoDesperdicioProductos.css'; // Asegúrate de tener estilos adecuados
 
-const GraficoDesperdicioProductos = ({ data}) => {
-  // Calcular estadísticas generales
-  const promedioGeneral = data.reduce((acc, item) => acc + item.desperdicio, 0) / data.length;
-  const maxDesperdicio = Math.max(...data.map(item => item.desperdicio));
-  const productosSobreMeta = data.filter(item => item.desperdicio > item.meta).length;
-    const colores = {
-        baja: '#52c41a',      // Por debajo de meta
-        estable: '#faad14',   // Cerca de meta
-        alerta: '#ff7a45',    // Por encima de meta
-        critica: '#f5222d'    // Muy por encima de meta
+const GraficoDesperdicioProductos = ({data}) => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [activeProduct, setActiveProduct] = useState(null);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
     };
 
-  // Custom Tooltip
-  const CustomTooltip = ({ active, payload, label }) => {
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  // Colores según la tendencia
+  const getColor = (tendencia) => {
+    switch(tendencia) {
+      case 'estable': return '#4CAF50';
+      case 'alerta': return '#FF9800';
+      case 'critica': return '#F44336';
+      default: return '#9E9E9E';
+    }
+  };
+
+  // Tooltip personalizado
+  const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
-      const item = payload[0].payload;
+      const data = payload[0].payload;
       return (
-        <div className="custom-tooltip" style={{
-          backgroundColor: 'white',
-          padding: '15px',
-          border: '1px solid #ccc',
-          borderRadius: '5px',
-          boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
-        }}>
-          <p style={{ fontWeight: 'bold', marginBottom: '10px', fontSize: '1.1rem' }}>
-            {label}
+        <div className="custom-tooltip">
+          <h3>{data.producto}</h3>
+          <p style={{ color: getColor(data.tendencia) }}>
+            Desperdicio: <strong>{data.desperdicio}%</strong>
           </p>
-          <p style={{ color: '#333', margin: '5px 0' }}>
-            Desperdicio: <strong style={{ color: colores[item.tendencia] }}>{item.desperdicio}%</strong>
-          </p>
-          <p style={{ color: '#666', margin: '5px 0' }}>
-            Meta: <strong>{item.meta}%</strong>
-          </p>
-          <p style={{ color: '#888', margin: '5px 0', fontSize: '0.9rem' }}>
-            Estado: {item.tendencia.toUpperCase()}
-          </p>
-          <p style={{ 
-            color: item.desperdicio <= item.meta ? '#52c41a' : '#f5222d',
-            fontWeight: 'bold',
-            margin: '5px 0'
-          }}>
-            {item.desperdicio <= item.meta ? '✅ Dentro de meta' : '❌ Fuera de meta'}
-          </p>
+          <p>Tendencia: <strong>{data.tendencia.toUpperCase()}</strong></p>
         </div>
       );
     }
     return null;
   };
 
+  // Calcular estadísticas
+  const promedioDesperdicio = (data.reduce((acc, item) => acc + item.desperdicio, 0) / data.length).toFixed(1);
+  const maxDesperdicio = Math.max(...data.map(item => item.desperdicio));
+  const minDesperdicio = Math.min(...data.map(item => item.desperdicio));
+
   return (
     <div className="grafico-desperdicio-container">
-      <h3 className="titulo-desperdicio">Desperdicio por Producto (%)</h3>
-
-      {/* Estadísticas generales */}
-      <div className="stats-header">
+      <div className="header-section">
+        <h2 className="titulo-principal">Desperdicio por Producto</h2>
+        <p className="subtitulo">Porcentaje de desperdicio en la producción</p>
+      </div>
+      
+      {/* Estadísticas resumen */}
+      <div className="estadisticas-resumen">
         <div className="stat-card">
-          <div className="stat-title">Promedio General</div>
-          <div className="stat-value stat-promedio">{promedioGeneral.toFixed(1)}%</div>
-          <div className="stat-subtitle">Todos los productos</div>
+          <div className="stat-valor">{promedioDesperdicio}%</div>
+          <div className="stat-label">Promedio</div>
         </div>
-        
         <div className="stat-card">
-          <div className="stat-title">Máximo Desperdicio</div>
-          <div className="stat-value stat-maximo">{maxDesperdicio}%</div>
-          <div className="stat-subtitle">Producto más crítico</div>
+          <div className="stat-valor">{maxDesperdicio}%</div>
+          <div className="stat-label">Máximo</div>
         </div>
-        
         <div className="stat-card">
-          <div className="stat-title">Fuera de Meta</div>
-          <div className="stat-value" style={{ color: productosSobreMeta > 0 ? '#f5222d' : '#52c41a' }}>
-            {productosSobreMeta}
-          </div>
-          <div className="stat-subtitle">Productos sobre meta</div>
+          <div className="stat-valor">{minDesperdicio}%</div>
+          <div className="stat-label">Mínimo</div>
         </div>
       </div>
 
-      {/* Gráfico de barras */}
-      <ResponsiveContainer width="100%" height={400}>
-        <BarChart
-          data={data}
-          margin={{ top: 20, right: 30, left: 60, bottom: 40 }}
-          layout="vertical"
-        >
-          <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-          <XAxis 
-            type="number" 
-            domain={[0, 'dataMax + 2']}
-            tickFormatter={(value) => `${value}%`}
-            label={{ value: 'Porcentaje de Desperdicio', position: 'insideBottom', offset: -5 }}
-          />
-          <YAxis 
-            dataKey="producto" 
-            type="category" 
-            width={120}
-            tick={{ fontSize: 12 }}
-          />
-          <Tooltip content={<CustomTooltip />} />
-          
-          {/* Barras de desperdicio */}
-          <Bar dataKey="desperdicio" name="Desperdicio" radius={[0, 4, 4, 0]}>
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={colores[entry.tendencia]} />
-            ))}
-          </Bar>
+      <div className="separator"></div>
 
-          {/* Líneas de meta individuales por producto */}
+      {/* Gráfico o tabla según el tamaño de pantalla */}
+      {isMobile ? (
+        <div className="tabla-desperdicio">
           {data.map((item, index) => (
-            <ReferenceLine 
-              key={`meta-${index}`}
-              x={item.meta}
-              stroke="#52c41a"
-              strokeDasharray="3 3"
-              strokeWidth={1.5}
-            />
+            <div 
+              key={index} 
+              className="tabla-fila"
+              onMouseEnter={() => setActiveProduct(index)}
+              onMouseLeave={() => setActiveProduct(null)}
+              style={{ 
+                backgroundColor: activeProduct === index ? '#f5f5f5' : 'white',
+                borderLeft: `5px solid ${getColor(item.tendencia)}`
+              }}
+            >
+              <span className="producto-nombre">{item.producto}</span>
+              <span className="desperdicio-valor" style={{ color: getColor(item.tendencia) }}>
+                {item.desperdicio}%
+              </span>
+            </div>
           ))}
-        </BarChart>
-      </ResponsiveContainer>
+        </div>
+      ) : (
+        <div className="chart-container">
+          <ResponsiveContainer width="100%" height={400}>
+            <BarChart
+              data={data}
+              layout="vertical"
+              barSize={30}
+            >
+              <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
+              <XAxis 
+                type="number" 
+                domain={[0, 8.2]}
+                ticks={[0, 1, 2, 3, 4, 5, 6, 7, 8]}
+              />
+              <YAxis 
+                dataKey="producto" 
+                type="category" 
+                tick={{ fontSize: 14 }}
+                width={140}
+              />
+              <Tooltip content={<CustomTooltip />} />
+              <Bar 
+                dataKey="desperdicio" 
+                name="Desperdicio"
+                radius={[0, 4, 4, 0]}
+                onMouseEnter={(data, index) => setActiveProduct(index)}
+                onMouseLeave={() => setActiveProduct(null)}
+              >
+                {data.map((entry, index) => (
+                  <Cell 
+                    key={`cell-${index}`} 
+                    fill={getColor(entry.tendencia)}
+                    stroke={activeProduct === index ? '#333' : null}
+                    strokeWidth={activeProduct === index ? 2 : 0}
+                  />
+                ))}
+                <LabelList 
+                  dataKey="desperdicio" 
+                  position="right" 
+                  formatter={(value) => `${value}%`}
+                  fill="#333"
+                  fontSize={12}
+                />
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      )}
 
-      {/* Leyenda de estados */}
-      <div className="leyenda-estados">
-        <div className="leyenda-item">
-          <div className="leyenda-color estado-baja"></div>
-          <span>Bajo (Por debajo de meta)</span>
-        </div>
-        <div className="leyenda-item">
-          <div className="leyenda-color estado-estable"></div>
-          <span>Estable (Cerca de meta)</span>
-        </div>
-        <div className="leyenda-item">
-          <div className="leyenda-color estado-alerta"></div>
-          <span>Alerta (Por encima de meta)</span>
-        </div>
-        <div className="leyenda-item">
-          <div className="leyenda-color estado-critica"></div>
-          <span>Crítico (Muy por encima)</span>
+      <div className="separator"></div>
+
+      {/* Leyenda */}
+      <div className="leyenda">
+        <div className="leyenda-titulo">Leyenda de Tendencia:</div>
+        <div className="leyenda-items">
+          <div className="leyenda-item">
+            <div className="leyenda-color" style={{ backgroundColor: '#4CAF50' }}></div>
+            <span>Estable</span>
+          </div>
+          <div className="leyenda-item">
+            <div className="leyenda-color" style={{ backgroundColor: '#FF9800' }}></div>
+            <span>Alerta</span>
+          </div>
+          <div className="leyenda-item">
+            <div className="leyenda-color" style={{ backgroundColor: '#F44336' }}></div>
+            <span>Crítica</span>
+          </div>
         </div>
       </div>
     </div>

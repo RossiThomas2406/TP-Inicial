@@ -60,19 +60,19 @@
 
 .oee-status.excelente {
   background-color: #e6f7ee;
-  color: #52c41a;
+  color: #7AC499;
   border: 2px solid #b7eb8f;
 }
 
 .oee-status.aceptable {
   background-color: #fff8e6;
-  color: #faad14;
+  color: #FFC355;
   border: 2px solid #ffe58f;
 }
 
 .oee-status.mejora {
   background-color: #ffe6e6;
-  color: #f5222d;
+  color: #E3322D;
   border: 2px solid #ffa39e;
 }
 
@@ -154,15 +154,15 @@
 }
 
 .legend-color.excelente {
-  background-color: #52c41a;
+  background-color: #7AC499;
 }
 
 .legend-color.aceptable {
-  background-color: #faad14;
+  background-color: #FFC355;
 }
 
 .legend-color.mejora {
-  background-color: #f5222d;
+  background-color: #E3322D;
 }
 
 /* Responsive */
