@@ -9,44 +9,17 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Método que puedes cambiar fácilmente entre mock y API real
   const authenticateUser = async (username, password) => {
-    // ⚡️ COMENTA ESTA LÍNEA CUANDO QUIERAS USAR LA API REAL ⚡️
-    return await mockAuthentication(username, password);
-    
-    // ⚡️ DESCOMENTA ESTA LÍNEA PARA USAR LA API REAL ⚡️
-    // return await realApiAuthentication(username, password);
+
+     return await realApiAuthentication(username, password);
   };
 
-  // Método mock para desarrollo y pruebas
-  const mockAuthentication = async (username, password) => {
-    // Simulamos un delay de red
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Usuarios de prueba
-    const testUsers = [
-      { username: 'admin', password: 'admin123', name: 'Administrador' },
-      { username: 'panadero', password: 'pan123', name: 'Panadero Principal' },
-      { username: 'vendedor', password: 'ventas123', name: 'Vendedor' },
-      { username: 'demo', password: 'demo123', name: 'Usuario Demo' }
-    ];
 
-    const user = testUsers.find(u => 
-      u.username === username && u.password === password
-    );
-
-    return {
-      success: !!user,
-      user: user || null,
-      token: user ? 'mock-token-' + Date.now() : null,
-      message: user ? 'Login exitoso' : 'Credenciales incorrectas'
-    };
-  };
 
   // Método para la API real (listo para cuando la necesites)
   const realApiAuthentication = async (username, password) => {
     try {
-      const response = await fetch('https://tu-api.com/auth/login', {
+      const response = await fetch('http://localhost:5000/api/findUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -55,7 +28,13 @@ export default function Login() {
       });
 
       const data = await response.json();
-      return data;
+
+      return {
+        success: !!data,
+        user: data || null,
+        token: data ? 'mock-token-' + Date.now() : null,
+        message: data ? 'Login exitoso' : 'Credenciales incorrectas'
+      };
     } catch (error) {
       return {
         success: false,
